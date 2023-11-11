@@ -13,15 +13,18 @@ namespace Identity.Persistence.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.HasOne(user => user.Role).WithMany().HasForeignKey(user => user.RoleId);
+
             builder.HasData(new User
             {
                 Id = Guid.Parse("{7AF84DC0-A713-40F8-8F6B-8B67CB545215}"),
-                FirstName = "Asilbek",
-                LastName = "Hoshimov",
+                FirstName = "Admin",
+                LastName = "Admin",
                 Age = 0,
                 EmailAddress = "dfsgh",
                 PasswordHash = "fdsg",
-                IsEmailAddressverified = true
+                IsEmailAddressverified = true,
+                RoleId = Guid.Parse("{80670DD4-FA68-4EE7-87A8-B425809B1D57}") 
             });
         }
     }

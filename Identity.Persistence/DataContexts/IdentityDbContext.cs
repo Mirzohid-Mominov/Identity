@@ -12,6 +12,8 @@ namespace Identity.Persistence.DataContexts
     {
         public DbSet<User> Users => Set<User>();
 
+        public DbSet<Role> Roles => Set<Role>();
+
         public IdentityDbContext(DbContextOptions<IdentityDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

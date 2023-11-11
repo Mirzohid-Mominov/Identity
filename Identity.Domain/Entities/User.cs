@@ -22,5 +22,9 @@ namespace Identity.Domain.Entities
         public string PasswordHash { get; set; } = string.Empty;
 
         public bool IsEmailAddressverified { get; set; }
+
+        public Guid RoleId { get; set; }
+
+        public virtual Role Role { get; set; }
     }
 }
