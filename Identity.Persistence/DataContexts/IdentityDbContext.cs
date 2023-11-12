@@ -14,7 +14,13 @@ namespace Identity.Persistence.DataContexts
 
         public DbSet<Role> Roles => Set<Role>();
 
-        public IdentityDbContext(DbContextOptions<IdentityDbContext> options) : base(options) { }
+        public DbSet<AccessToken> AccessTokens => Set<AccessToken>();
+
+        public IdentityDbContext(DbContextOptions<IdentityDbContext> options) : base(options)
+        {
+
+        }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
