@@ -13,3 +13,4 @@ namespace Identity.Api.Configurations
         }
     }
 }
+    
