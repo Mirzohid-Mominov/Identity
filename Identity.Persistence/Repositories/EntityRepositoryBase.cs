@@ -1,4 +1,5 @@
 ﻿using Identity.Domain.Common;
+using Identity.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,77 @@ namespace Identity.Persistence.Repositories
             return await initialQuery.SingleOrDefaultAsync(entity => entity.Id == id, cancellationToken : cancellationToken);
 
         }
-       
+
+        public async ValueTask<IList<TEntity>> GetByIdsAsync(
+        IEnumerable<Guid> ids,
+        bool asNoTracking = false,
+        CancellationToken cancellationToken = default
+        )
+        {
+            var initialQuery = DbContext.Set<TEntity>().Where(entity => true);
+
+            if(asNoTracking)
+                initialQuery = initialQuery.AsNoTracking();
+
+            return await initialQuery.ToListAsync(cancellationToken: cancellationToken);
+        }
+
+
+        public async ValueTask<TEntity> CreateAsync(
+            TEntity entity,
+            bool saveChanges, 
+            CancellationToken cancellationToken)
+        {
+            await DbContext.Set<TEntity>().AddAsync(entity, cancellationToken);
+
+            if (saveChanges)
+                await DbContext.SaveChangesAsync(cancellationToken);
+
+            return entity;
+        }
+
+        internal async ValueTask<TEntity> UpdateAsync(
+            TEntity entity,
+            bool saveChanges,
+            CancellationToken cancellationToken)
+        {
+            var type = typeof(TEntity);
+
+            DbContext.Set<TEntity>().Update(entity);
+
+            if (saveChanges)
+                await DbContext.SaveChangesAsync(cancellationToken);
+
+            return entity;
+        }
+
+        public async ValueTask<TEntity?> DeleteAsync(
+            TEntity entity, 
+            bool saveChanges = true,
+            CancellationToken cancellationToken = default)
+        {
+            DbContext.Set<TEntity>().Remove(entity);
+
+            if (saveChanges)
+                await DbContext.SaveChangesAsync(cancellationToken);
+
+            return entity;
+        }
+
+        public async ValueTask<TEntity> DeleteByIdAsync(
+            Guid id,
+            bool saveChanges = true,
+            CancellationToken cancellationToken = default)
+        {
+            var entity = await DbContext.Set<TEntity>().FirstOrDefaultAsync(entity => entity.Id == id, cancellationToken) ??
+                throw new InvalidOperationException();
+
+            DbContext.Set<TEntity>().Remove(entity);
+
+            if (saveChanges)
+                await DbContext.SaveChangesAsync(cancellationToken;
+
+            return entity;
+        }
     }
 }

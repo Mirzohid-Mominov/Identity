@@ -24,7 +24,7 @@ namespace Identity.Persistence.EntityConfiguration
                 EmailAddress = "dfsgh",
                 PasswordHash = "fdsg",
                 IsEmailAddressverified = true,
-                RoleId = Guid.Parse("{80670DD4-FA68-4EE7-87A8-B425809B1D57}") 
+                RoleId = Guid.Parse("{9496766E-0D40-42E3-8A28-E43680854CE1}") 
             });
         }
     }

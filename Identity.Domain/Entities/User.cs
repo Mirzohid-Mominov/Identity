@@ -25,6 +25,6 @@ namespace Identity.Domain.Entities
 
         public Guid RoleId { get; set; }
 
-        public virtual Role Role { get; set; }
+        public Role Role { get; set; }
     }
 }
