@@ -10,6 +10,6 @@ namespace Identity.Application.Common.Identity.Services
 {
     public interface IRoleService
     {
-        ValueTask<Role?> GetByTypeAsync(RoleType roleType, bool asNoTracking, CancellationToken cancellationToken = default);
+        ValueTask<Role?> GetByTypeAsync(RoleType roleType, bool asNoTracking = false, CancellationToken cancellationToken = default);
     }
 }
