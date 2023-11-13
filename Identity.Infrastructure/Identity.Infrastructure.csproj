@@ -19,4 +19,13 @@
     <Folder Include="Common\Notifications\Services\" />
   </ItemGroup>
 
+
+
+
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
 </Project>

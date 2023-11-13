@@ -36,7 +36,5 @@ namespace Identity.Infrastructure.Common.Identity.Services
 
             return true;
         }
-
-
     }
 }
