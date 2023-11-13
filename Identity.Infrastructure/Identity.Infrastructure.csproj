@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Identity.Application\Identity.Application.csproj" />
     <ProjectReference Include="..\Identity.Persistence\Identity.Persistence.csproj" />
+  </ItemGroup>
+
+
+
+
+
+  <ItemGroup>
+    <Folder Include="Common\Notifications\Services\" />
   </ItemGroup>
 
 </Project>
