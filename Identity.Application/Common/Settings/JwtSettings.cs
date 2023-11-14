@@ -8,7 +8,7 @@ namespace Identity.Application.Common.Settings
 {
     public class JwtSettings
     {
-        public bool ValidaIsUser { get; set; }
+        public bool ValidateIsUser { get; set; }
 
         public string ValidIsUser { get; set; } = default!;
 

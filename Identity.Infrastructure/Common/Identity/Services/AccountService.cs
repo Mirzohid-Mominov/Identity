@@ -40,7 +40,7 @@ namespace Identity.Infrastructure.Common.Identity.Services
             var result = verificationTokenResult.Token.Type switch
             {
                 VerificationType.EmailAddressVerification => MarkEmailAsVerifiedAsync(verificationTokenResult.Token.UserId),
-                => throw new InvalidOperationException("This method is not intended to accept other types of tokens")
+                _ => throw new InvalidOperationException("This method is not intended to accept other types of tokens")
             };
 
             return result;

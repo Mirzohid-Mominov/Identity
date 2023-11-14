@@ -7,9 +7,24 @@ namespace Identity.Api.Configurations
         public static ValueTask<WebApplicationBuilder> ConfigureAsync(this WebApplicationBuilder builder)
         {
             builder.
-                AddPersistence();
+                AddHttpContextProvider()
+                .AddPersistence()
+                .AddIdentityInfrastructure()
+                .AddNotificationInfrastructure()
+                .AddDevTools()
+                .AddExposers();
 
             return new(builder);
+        }
+
+        public static ValueTask<WebApplication> ConfigureAsync(this WebApplication app)
+        {
+            app
+                .UseIdentityInfrastructure()
+                .UseDevtools()
+                .UseExposers();
+
+            return new(app);
         }
     }
 }

@@ -115,7 +115,7 @@ namespace Identity.Persistence.Repositories
             DbContext.Set<TEntity>().Remove(entity);
 
             if (saveChanges)
-                await DbContext.SaveChangesAsync(cancellationToken;
+                await DbContext.SaveChangesAsync(cancellationToken);
 
             return entity;
         }
