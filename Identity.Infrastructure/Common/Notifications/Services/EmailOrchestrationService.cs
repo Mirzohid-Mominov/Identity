@@ -1,5 +1,7 @@
 ﻿using Identity.Application.Common.Notifications.Services;
 using Identity.Application.Common.Settings;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +16,9 @@ namespace Identity.Infrastructure.Common.Notifications.Services
     {
         private readonly EmailSenderSetting _emailSenderSetting;
 
-        public EmailOrchestrationService(EmailSenderSetting emailSenderSetting)
+        public EmailOrchestrationService(IOptions<EmailSenderSetting> emailSenderSetting)
         {
-            _emailSenderSetting = emailSenderSetting;
+            _emailSenderSetting = emailSenderSetting.Value;
         }
 
         public ValueTask<bool> SendAsync(string emailAddress, string message)

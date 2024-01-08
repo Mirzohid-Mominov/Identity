@@ -2,6 +2,7 @@
 using Identity.Application.Common.Identity.Services;
 using Identity.Application.Common.Settings;
 using Identity.Domain.Entities;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,9 @@ namespace Identity.Infrastructure.Common.Identity.Services
     {
         private readonly JwtSettings _jwtSettings;
 
-        public TokenGeneratorService(JwtSettings jwtSettings)
+        public TokenGeneratorService(IOptions<JwtSettings> jwtSettings)
         {
-            _jwtSettings = jwtSettings;
+            _jwtSettings = jwtSettings.Value;
         }
 
         public List<Claim> GetClaims(User user)

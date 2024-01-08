@@ -36,6 +36,8 @@ namespace Identity.Api.Configurations
             builder.Services.Configure<VerificationTokenSettings>(
                 builder.Configuration.GetSection(nameof(VerificationTokenSettings)));
 
+            builder.Services.AddDataProtection();
+
             builder.Services.AddTransient<ITokenGeneratorService, TokenGeneratorService>()
                 .AddTransient<IPasswordHasherService, PasswordHasherService>()
                 .AddTransient<IVerificationTokenGeneratorService, VerificationTokenGeneratorService>();

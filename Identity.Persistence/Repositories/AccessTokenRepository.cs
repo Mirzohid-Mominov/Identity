@@ -18,7 +18,7 @@ namespace Identity.Persistence.Repositories
 
         public ValueTask<AccessToken> CreateAsync(AccessToken token, bool saveChanges = true, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return base.CreateAsync(token, saveChanges, cancellationToken);
         }
     }
 }

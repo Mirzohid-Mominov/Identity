@@ -21,8 +21,8 @@ namespace Identity.Infrastructure.Common.Identity.Services
         public VerificationTokenGeneratorService(IOptions<VerificationTokenSettings> verificationTokenSettings,
         IDataProtectionProvider dataProtectionProvider)
         {
-            _dataProtector = dataProtectionProvider.CreateProtector(_verificationTokenSettings.IdentityVerificationTokenPurpose);
             _verificationTokenSettings = verificationTokenSettings.Value;
+            _dataProtector = dataProtectionProvider.CreateProtector(_verificationTokenSettings.IdentityVerificationTokenPurpose);
         }
 
         public (VerificationToken Token, bool IsValid) DecodeToken(string token)
